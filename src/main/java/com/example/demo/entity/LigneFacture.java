@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import javax.persistence.*;
 
+
+@Entity
 public class LigneFacture {
 
     @Id
@@ -11,7 +13,7 @@ public class LigneFacture {
     @ManyToOne
     private Facture facture;
 
-    @OneToMany
+    @ManyToOne
     private Article article;
 
 
