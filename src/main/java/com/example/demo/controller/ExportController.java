@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -33,5 +34,12 @@ public class ExportController {
         LocalDate now = LocalDate.now();
         writer.println("Id;Nom;Prenom;Date de Naissance;Age");
 
+        for (Client client : allClients) {
+
+            writer.println(client.getId() + ";"
+                    + client.getPrenom() + ";"
+                    + client.getNom() + ";"
+                    + client.getDateNaissance().format(DateTimeFormatter.ofPattern("dd/MM/YYYY")));
+        }
     }
 }
