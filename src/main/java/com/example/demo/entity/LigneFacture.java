@@ -13,8 +13,28 @@ public class LigneFacture {
     @ManyToOne
     private Facture facture;
 
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
+
     @ManyToOne
     private Article article;
+
+    public Integer getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(Integer quantite) {
+        this.quantite = quantite;
+    }
+
+    @Column
+    private Integer quantite;
+
 
 
     public Long getId() {
@@ -33,13 +53,8 @@ public class LigneFacture {
         this.facture = facture;
     }
 
-    public Article getArticle() {
-        return article;
+
+    public Double getSousTotal() {
+        return getArticle().getPrix() * quantite;
     }
-
-    public void setArticle(Article article) {
-        this.article = article;
-    }
-
-
 }

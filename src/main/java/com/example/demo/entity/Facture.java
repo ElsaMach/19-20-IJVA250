@@ -16,6 +16,14 @@ public class Facture {
     @OneToMany(mappedBy = "facture")
     private Set<LigneFacture> ligneFactures;
 
+    public void setLigneFactures(Set<LigneFacture> ligneFactures) {
+        this.ligneFactures = ligneFactures;
+    }
+
+    public Set<LigneFacture> getLigneFactures() {
+        return ligneFactures;
+    }
+
 
     public Long getId() {
         return id;
@@ -34,5 +42,12 @@ public class Facture {
     }
 
 
+    public Double getTotal(){
+        Double total = 0.0;
+        for (LigneFacture ligneFacture : ligneFactures){
+            total = total + ligneFacture.getSousTotal();
+        }
+        return total;
+    }
 
 }

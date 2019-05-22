@@ -16,7 +16,14 @@ public class FactureService {
     private FactureRepository factureRepository;
 
     public List<Facture> findAllFactures() {
+
         return factureRepository.findAll();
     }
+
+    public List<Facture> findFactureClient(Long clientId) {
+
+        return factureRepository.findByClientId(clientId);
+    }
 }
+
 
